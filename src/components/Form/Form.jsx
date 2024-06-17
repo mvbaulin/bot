@@ -22,6 +22,8 @@ const Form = () => {
   useEffect(() => {
     if (!country || !street) {
       tg.MainButton.hide();
+    } else {
+      tg.MainButton.show();
     }
   }, [])
 
