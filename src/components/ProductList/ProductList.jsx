@@ -9,6 +9,7 @@ const products = [
   {id: 3, title: 'lfk;', price: 142, description: 'desc3'},
   {id: 4, title: 'o2', price: 9824, description: 'desc4'},
   {id: 5, title: 'kljf', price: 2412, description: 'desc5'},
+  {id: 6, title: 'lkjf', price: 2412, description: 'desc6'},
 ];
 
 const getTotalPrice = (items = []) => {
