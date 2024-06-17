@@ -1,7 +1,7 @@
 /* eslint-disable no-unused-vars */
 /* eslint-disable react-hooks/exhaustive-deps */
 
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import './Form.css';
 import { useTelegram } from '../../hooks/useTelegram';
 
@@ -12,6 +12,24 @@ const Form = () => {
   const [subject, setSubject] = useState('');
 
   const {tg} = useTelegram();
+
+  const onSendData = useCallback(() => {
+    const data = {
+      street,
+      country,
+      subject
+    };
+
+    tg.sendData(JSON.stringify(data));
+  }, [])
+
+  useEffect(() => {
+    tg.onEvent('MainButtonClicked', onSendData);
+    
+    return () => {
+      tg.offEvent('MainButtonClicked', onSendData);
+    }
+  }, [])
 
   useEffect(() => {
     tg.MainButton.setParams({
